@@ -48,19 +48,20 @@ test_datagen = ImageDataGenerator(rescale=1./255)
 training_set = train_datagen.flow_from_directory(
         '/mlops/cnn_dataset/training_set/',
         target_size=(64, 64),
-        steps_per_epoch=32,
+        batch_size=32,
         class_mode='binary')
 test_set = test_datagen.flow_from_directory(
         '/mlops/cnn_dataset/test_set/',
         target_size=(64, 64),
-        steps_per_epoch=32,
+        batch_size=32,
         class_mode='binary')
 model.fit(
         training_set,
-        batch_size=100,
+        steps_per_epoch=100,
         epochs=1,
         validation_data=test_set,
         validation_steps=800)
+model.save_weights('cat_dag.h5')
 
 score = model.evaluate(x_test, y_test, verbose=1)
 print('Test loss:', score[0])
