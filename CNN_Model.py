@@ -12,7 +12,6 @@ from keras.layers import MaxPooling2D
 from keras.layers import Flatten
 from keras.layers import Dense
 from keras.models import Sequential
-import os
 
 model = Sequential()
 model.add(Convolution2D(filters=32, 
@@ -67,8 +66,3 @@ score = model.evaluate(x_test, y_test, verbose=1)
 print('Test loss:', score[0])
 print('Test accuracy:', score[1])
 accuracy=score[1]*100
-
-file = open("accuracy.txt","w")
-file.write(str(accuracy))
-file.close()
-os.system("mv /accuracy.txt /mlops/")
