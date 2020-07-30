@@ -38,7 +38,7 @@ model.add(Dense(units=1, activation='sigmoid'))
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
 
-from keras_preprocessing.image import ImageDataGenerator
+from keras.preprocessing.image import ImageDataGenerator
 
 train_datagen = ImageDataGenerator(
         rescale=1./255,
