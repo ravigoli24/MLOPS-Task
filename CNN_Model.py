@@ -64,11 +64,3 @@ history = model.fit_generator(
         validation_steps=800)
 
 model.save('model_CNN.h5')
-
-text = history.history
-accuracy = text['accuracy'][0] * 100
-accuracy = int(accuracy)
-f= open("accuracy.txt","w+")
-f.write(str(accuracy))
-f.close()
-print("Accuracy for the model is : " , accuracy ,"%")
