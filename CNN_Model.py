@@ -64,7 +64,7 @@ history = model.fit_generator(
         validation_steps=800)
 
 text = history.history
-accuracy = text['accuracy'][0] * 100
+accuracy = text['history'][0] * 100
 accuracy = int(accuracy)
 f= open("accuracy.txt","w+")
 f.write(str(accuracy))
