@@ -63,4 +63,14 @@ history = model.fit_generator(
         validation_data=test_set,
         validation_steps=800)
 
+score = model.evaluate(test_set)
+print('Test loss:', score[0])
+print('Test accuracy:', score[1])
+accuracy=score[1]*100
+	
+file = open("accuracy.txt","w")
+file.write(str(accuracy))
+file.close()
+os.system("mv /accuracy.txt /mlops/")
+
 model.save('model_CNN.h5')
