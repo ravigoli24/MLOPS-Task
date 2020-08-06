@@ -58,19 +58,17 @@ test_set = test_datagen.flow_from_directory(
         class_mode='binary')
 history = model.fit_generator(
         training_set,
-        steps_per_epoch=800,
+        steps_per_epoch=20,
         epochs=1,
         validation_data=test_set,
         validation_steps=800)
 
-score = model.evaluate(test_set)
-print('Test loss:', score[0])
-print('Test accuracy:', score[1])
-accuracy=score[1]*100
-	
-file = open("accuracy.txt","w")
-file.write(str(accuracy))
-file.close()
-os.system("mv /accuracy.txt /mlops/")
+text = history.history
+accuracy = text['accuracy'][0] * 100
+accuracy = int(accuracy)
+f= open("accuracy.txt","w+")
+f.write(str(accuracy))
+f.close()
+print("Accuracy for the model is : " , accuracy ,"%")
 
 model.save('model_CNN.h5')
