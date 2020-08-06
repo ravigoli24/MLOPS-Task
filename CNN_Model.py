@@ -56,12 +56,14 @@ test_set = test_datagen.flow_from_directory(
         target_size=(64, 64),
         batch_size=32,
         class_mode='binary')
-model.fit(
+model.fit_generator(
         training_set,
         steps_per_epoch=8000,
         epochs=1,
         validation_data=test_set,
         validation_steps=800)
+
+model.save('model_CNN.h5')
 
 score = model.evaluate(x_test, y_test, verbose=1)
 print('Test loss:', score[0])
