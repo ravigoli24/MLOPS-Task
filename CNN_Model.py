@@ -65,3 +65,13 @@ model.fit_generator(
 
 model.save('model_CNN.h5')
 
+score = model.evaluate(test_set, verbose=1)
+print('Test loss:', score[0])
+print('Test accuracy:', score[1])
+accuracy=score[1]*100
+	
+file = open("accuracy.txt","w")
+file.write(str(accuracy))
+file.close()
+os.system("mv /accuracy.txt /mlops/")
+
