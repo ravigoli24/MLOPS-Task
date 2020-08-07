@@ -40,6 +40,8 @@ model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy']
 
 from keras.preprocessing.image import ImageDataGenerator
 
+epochs=1
+
 train_datagen = ImageDataGenerator(
         rescale=1./255,
         shear_range=0.2,
@@ -59,7 +61,7 @@ test_set = test_datagen.flow_from_directory(
 fit_model = model.fit_generator(
         training_set,
         steps_per_epoch=20,
-        epochs=1,
+        epochs=epochs,
         validation_data=test_set,
         validation_steps=800)
 
