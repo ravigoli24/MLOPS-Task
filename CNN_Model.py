@@ -63,7 +63,7 @@ fit_model = model.fit_generator(
         validation_data=test_set,
         validation_steps=800)
 
-        accuracy=validate(fit_model , epochs)
-	    flag = 1
+accuracy=validate(fit_model , epochs)
+flag = 1
 
 model.save('model_CNN.h5')
