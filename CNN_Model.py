@@ -63,7 +63,16 @@ fit_model = model.fit_generator(
         validation_data=test_set,
         validation_steps=800)
 
+
+def validate(fit_model, epochs):
+	text = fit_model.history
+	accuracy = text['accuracy'][epochs-1] * 100
+	accuracy = int(accuracy)
+	f= open("accuracy.txt","w+")
+	f.write(str(accuracy))
+	f.close()
+	print("    Accuracy for this Iteration is : " , accuracy ,"%")
+	return accuracy
+
 accuracy=validate(fit_model , epochs)
 flag = 1
-
-model.save('model_CNN.h5')
