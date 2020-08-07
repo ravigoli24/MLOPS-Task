@@ -56,19 +56,14 @@ test_set = test_datagen.flow_from_directory(
         target_size=(64, 64),
         batch_size=32,
         class_mode='binary')
-history = model.fit_generator(
+fit_model = model.fit_generator(
         training_set,
         steps_per_epoch=20,
         epochs=1,
         validation_data=test_set,
         validation_steps=800)
 
-text = history.history
-accuracy = text * 100
-accuracy = int(accuracy)
-f= open("accuracy.txt","w+")
-f.write(str(accuracy))
-f.close()
-print("Accuracy for the model is : " , accuracy ,"%")
+        accuracy=validate(fit_model , epochs)
+	    flag = 1
 
 model.save('model_CNN.h5')
